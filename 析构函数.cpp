@@ -1,13 +1,6 @@
 #include<iostream>
 using namespace std;
 
-/**
-如果一个类中包含指向动态分配存储空间的指针类型的成员变量时，
-就应该为这个类设计一个拷贝构造函数，除了需要设计一个拷贝构
-造函数之外，还需要为它添加一个赋值操作符重载函数（即重载“=”
-操作符，这将会在操作符重载那一章加以介绍）
-**/
-
 class Array
 {
 public:
@@ -18,10 +11,18 @@ public:
     int * getaddress();
     void display();
     int getlength(){return length;}
+    ~Array();
 private:
     int length;
     int * num;
 };
+
+Array::~Array()
+{
+    if(num != NULL)
+        delete[] num;
+    cout<<"destructor"<<endl;
+}
 
 Array::Array(Array & a)
 {
@@ -75,8 +76,8 @@ int main()
     Array arr2(arr1);
     arr2.display();
     arr2.setnum(8,2);
-    arr2.display();
     arr1.display();
+    arr2.display();
     cout<<arr1.getaddress()<<" "<<arr2.getaddress()<<endl;
     return 0;
 }
