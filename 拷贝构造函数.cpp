@@ -50,7 +50,7 @@ int main( )
 {
    Line line(10);
 
-   display(line);
+   display(line); /* 实参是类的对象，在形参和实参结合时调用复制构造函数 */ 
 
    return 0;
 }
