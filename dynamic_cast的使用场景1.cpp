@@ -20,6 +20,7 @@ int main()
     if(d)
     {
         cout<<"Base to Derived is ok"<<endl;
+	cout << "helloworld" << endl;
         delete d;
     }
     else
